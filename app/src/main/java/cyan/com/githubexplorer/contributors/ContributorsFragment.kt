@@ -1,6 +1,9 @@
 package cyan.com.githubexplorer.contributors
 
-import android.support.v4.app.Fragment
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class ContributorsFragment : Fragment(), ContributorsView {
+class ContributorsFragment : DaggerFragment(), ContributorsView {
+    @Inject
+    lateinit var presenter: ContributorsPresenter
 }

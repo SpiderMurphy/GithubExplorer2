@@ -1,4 +1,6 @@
 package cyan.com.githubexplorer.contributors
 
-interface ContributorsPresenter {
+import cyan.com.githubexplorer.mvp.BasePresenter
+
+interface ContributorsPresenter : BasePresenter {
 }
