@@ -8,11 +8,11 @@ import javax.inject.Singleton
 
 @Module
 class RepositoryModule {
-    @Singleton
     @Provides
+    @Singleton
     fun provideApiService(retrofit: Retrofit): GithubApi = retrofit.create(GithubApi::class.java)
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideRepository(api: GithubApi): Repository = RemoteRepository(api, ExecutorServiceAsync())
 }
