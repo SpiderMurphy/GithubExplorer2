@@ -1,7 +1,5 @@
 package cyan.com.githubexplorer.contributors
 
-import android.annotation.SuppressLint
-import android.util.Log
 import cyan.com.githubexplorer.model.Repository
 import io.reactivex.disposables.CompositeDisposable
 
@@ -27,7 +25,7 @@ class ContributorsPresenterImpl(
                 view?.onDisplayContributors(contributors)
             },
             {
-                Log.w("Error", it.toString())
+                view?.onDisplayError(it.localizedMessage)
             })
         )
     }

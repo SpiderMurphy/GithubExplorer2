@@ -5,7 +5,10 @@ import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import cyan.com.githubexplorer.R
+import cyan.com.githubexplorer.contributors.adapter.ContributorsListAdapter
+import cyan.com.githubexplorer.contributors.adapter.ContributorsListPresenterImpl
 import cyan.com.githubexplorer.model.data.Contributor
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_contributors_list.view.*
@@ -29,7 +32,11 @@ class ContributorsFragment : DaggerFragment(), ContributorsView {
     }
 
     override fun onDisplayContributors(contributors: List<Contributor>) {
+        view?.contributorsRecyclerView?.adapter = ContributorsListAdapter(ContributorsListPresenterImpl(contributors))
+    }
 
+    override fun onDisplayError(error: String) {
+        Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
     }
 
     override fun onViewReady() {
