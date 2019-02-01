@@ -1,11 +1,14 @@
 package cyan.com.githubexplorer.contributors
 
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cyan.com.githubexplorer.R
+import cyan.com.githubexplorer.model.data.Contributor
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_contributors_list.view.*
 import javax.inject.Inject
 
 class ContributorsFragment : DaggerFragment(), ContributorsView {
@@ -23,5 +26,20 @@ class ContributorsFragment : DaggerFragment(), ContributorsView {
     override fun onDestroyView() {
         super.onDestroyView()
         presenter.destroy()
+    }
+
+    override fun onDisplayContributors(contributors: List<Contributor>) {
+
+    }
+
+    override fun onViewReady() {
+        initView()
+        presenter.queryContributors(
+            context?.getString(R.string.user).orEmpty(),
+            context?.getString(R.string.repo).orEmpty())
+    }
+
+    private fun initView() {
+        view?.contributorsRecyclerView?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     }
 }

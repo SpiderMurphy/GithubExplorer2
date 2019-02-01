@@ -1,9 +1,14 @@
 package cyan.com.githubexplorer.model
 
 import io.reactivex.SingleTransformer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ExecutorServiceAsync : ExecutorService {
     override fun <T> singleThreadExecutor(): SingleTransformer<T, T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return SingleTransformer {
+            it.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        }
     }
 }
