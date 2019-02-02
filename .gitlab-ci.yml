@@ -12,8 +12,8 @@ cache:
      - .gradle/
 
 stages:
-  - build
   - test
+  - build
   
 unitTests:
   stage: test
