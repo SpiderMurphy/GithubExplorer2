@@ -26,8 +26,10 @@ class ContributorsListAdapter(
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), ContributorsListView {
         override fun onBindView(username: String, contributions: String) {
-            itemView.contributorTextView.text = username
-            itemView.contributionTextView.text = contributions
+            itemView.apply {
+                contributorTextView.text = username
+                contributionTextView.text = contributions
+            }
         }
 
         override fun onDisplayAvatar(avatar: String) {
