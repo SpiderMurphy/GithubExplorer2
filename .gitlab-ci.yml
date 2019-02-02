@@ -18,12 +18,12 @@ stages:
 unitTests:
   stage: test
   script:
-    - ./gradlew test
+    - ./gradlew test --no-daemon --max-workers 2
 
 build:
   stage: build
   script:
-     - ./gradlew assembleDebug
+     - ./gradlew assembleDebug --no-daemon --max-workers 2
   artifacts:
     paths:
       - app/build/outputs/apk/
