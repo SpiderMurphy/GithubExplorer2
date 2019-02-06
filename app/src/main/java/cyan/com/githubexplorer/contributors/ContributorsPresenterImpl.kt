@@ -19,14 +19,20 @@ class ContributorsPresenterImpl(
     }
 
     override fun queryContributors(user: String, repo: String) {
-        disposable.add(repository.fetchRepoContributors(user, repo).subscribe(
-            {
-                contributors ->
-                view?.onDisplayContributors(contributors)
-            },
-            {
-                view?.onDisplayError(it.localizedMessage)
-            })
+        disposable.add(
+            repository.fetchRepoContributors(user, repo)
+                .map {
+                    it.sortedWith(Comparator { c1, c2 -> c1.login.orEmpty().compareTo(c2.login.orEmpty())
+                    })
+                }
+                .subscribe(
+                {
+                    contributors ->
+                    view?.onDisplayContributors(contributors)
+                },
+                {
+                    view?.onDisplayError(it.localizedMessage)
+                })
         )
     }
 }
