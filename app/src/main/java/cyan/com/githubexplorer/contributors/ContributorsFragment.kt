@@ -30,12 +30,17 @@ class ContributorsFragment : DaggerFragment() {
         presenter.subscribe(::render)
     }
 
-    private fun onDisplayContributors(contributors: List<Contributor>) {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.destroy()
+    }
+
+    private fun displayContributors(contributors: List<Contributor>) {
         view?.contributorsRecyclerView?.adapter = ContributorsListAdapter(ContributorsListPresenterImpl(contributors))
     }
 
-    private fun onDisplayError(error: String) {
-        Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+    private fun displayError(error: String) {
+        if (!error.isEmpty()) Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
     }
 
     private fun merge(view: View): Observable<ContributorsIntent> = Observable.merge(
@@ -51,8 +56,8 @@ class ContributorsFragment : DaggerFragment() {
 
     private fun render(state: ContributorsViewState) {
         with (state) {
-            onDisplayContributors(contributors)
-            onDisplayError(errorMessage.orEmpty())
+            displayContributors(contributors)
+            displayError(errorMessage.orEmpty())
         }
     }
 
