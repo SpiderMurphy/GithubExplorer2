@@ -38,7 +38,7 @@ dependencies {
     def mockito_kotlin_version = '2.1.0'
     def kluent_version = '1.45'
     def glide_version = '4.8.0'
-    def nav_version = "1.0.0-beta01"
+    def nav_version = "1.0.0-rc02"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -87,6 +87,9 @@ dependencies {
 
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "io.mockk:mockk:1.9.kotlin12"
+
+    // Mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:7.2.0'
 
     // Kluent
     testImplementation "org.amshove.kluent:kluent-android:$kluent_version"

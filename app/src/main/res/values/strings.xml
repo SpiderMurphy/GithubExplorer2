@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Github Explorer</string>
     <string name="base_url">https://api.github.com/</string>
+    <string name="map_token">pk.eyJ1IjoibXVycGh5LXMiLCJhIjoiY2p0NzdjZXdsMG4xaTQzbXd6d2ljMG5ldCJ9.N_vfXQ4W6t1IBy6WW2gfdQ</string>
     <string name="user">ruby</string>
     <string name="repo">ruby</string>
 </resources>
