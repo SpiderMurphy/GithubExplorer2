@@ -10,6 +10,9 @@ import com.jakewharton.rxbinding3.view.clicks
 import cyan.com.githubexplorer.R
 import cyan.com.githubexplorer.contributors.adapter.ContributorsListAdapter
 import cyan.com.githubexplorer.contributors.adapter.ContributorsListPresenterImpl
+import cyan.com.githubexplorer.contributors.mvi.ContributorsIntent
+import cyan.com.githubexplorer.contributors.mvi.ContributorsMviPresenter
+import cyan.com.githubexplorer.contributors.mvi.ContributorsViewState
 import cyan.com.githubexplorer.model.data.Contributor
 import dagger.android.support.DaggerFragment
 import io.reactivex.Observable
@@ -27,7 +30,16 @@ class ContributorsFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView()
         presenter.bind(merge(view))
+    }
+
+    override fun onStart() {
+        super.onStart()
         presenter.subscribe(::render)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.unsubscribe()
     }
 
     override fun onDestroyView() {

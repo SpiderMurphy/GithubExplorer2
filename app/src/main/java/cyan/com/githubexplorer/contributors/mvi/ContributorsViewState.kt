@@ -1,4 +1,4 @@
-package cyan.com.githubexplorer.contributors
+package cyan.com.githubexplorer.contributors.mvi
 
 import cyan.com.githubexplorer.model.data.Contributor
 

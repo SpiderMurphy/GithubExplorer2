@@ -1,6 +1,8 @@
 package cyan.com.githubexplorer.di.module
 
-import cyan.com.githubexplorer.contributors.*
+import cyan.com.githubexplorer.contributors.mvi.ContributorsInteractor
+import cyan.com.githubexplorer.contributors.mvi.ContributorsInteractorImpl
+import cyan.com.githubexplorer.contributors.mvi.ContributorsMviPresenter
 import cyan.com.githubexplorer.model.ExecutorServiceAsync
 import cyan.com.githubexplorer.model.Repository
 import dagger.Module
@@ -13,5 +15,6 @@ class ContributorsModule {
         ContributorsInteractorImpl(repository, ExecutorServiceAsync())
 
     @Provides
-    fun providePresenter(interactor: ContributorsInteractor): ContributorsMviPresenter = ContributorsMviPresenter(interactor)
+    fun providePresenter(interactor: ContributorsInteractor): ContributorsMviPresenter =
+        ContributorsMviPresenter(interactor)
 }
