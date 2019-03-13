@@ -36,7 +36,7 @@ class MapFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mapView.getMapAsync { mapBox ->
-            mapBox.setStyle(Style.LIGHT) {
+            mapBox.setStyle(Style.OUTDOORS) {
                 it.addImage("location-marker", mapSymbol.from(resources.getDrawable(R.drawable.ic_location_on_black_24dp, null)))
 
                 val geoJsonSource = GeoJsonSource(
