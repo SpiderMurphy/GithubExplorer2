@@ -4,6 +4,7 @@ import android.app.Application
 import cyan.com.githubexplorer.GithubExplorer
 import cyan.com.githubexplorer.di.ActivityBuilder
 import cyan.com.githubexplorer.di.module.ApplicationModule
+import cyan.com.githubexplorer.di.module.NavRepositoryModule
 import cyan.com.githubexplorer.di.module.RepositoryModule
 import dagger.BindsInstance
 import dagger.Component
@@ -16,6 +17,7 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     ApplicationModule::class,
     RepositoryModule::class,
+    NavRepositoryModule::class,
     ActivityBuilder::class
 ])
 interface ApplicationComponent : AndroidInjector<GithubExplorer> {
